@@ -1,0 +1,8 @@
+{
+  "name": "Arts Club SNIST — Official Flagship",
+  "description": "The official flagship digital showcase of the Arts Club at Sreenidhi Institute of Science & Technology (SNIST). Exploring artistic disciplines, signature cultural events, wings, and leadership since 2005.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
