@@ -888,8 +888,8 @@ export default function App() {
       </section>
 
       {/* SECTION 1: "OUR EVENTS" (Interactive Grid + Popups) */}
-      <section id="events" className="py-24 border-t border-white/[0.06] relative">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="events" className="py-16 sm:py-24 border-t border-white/[0.06] relative">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
             <div>
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-amber-400/90 mb-2">
@@ -904,8 +904,8 @@ export default function App() {
             </p>
           </div>
 
-          {/* 3-Column Responsive Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* 3-Column Responsive Grid - 3 cards at a time on mobile */}
+          <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-8">
             {EVENTS_DATA.map((evt) => (
               <div
                 key={evt.id}
@@ -913,10 +913,10 @@ export default function App() {
                   setSelectedEvent(evt);
                   playChime(600);
                 }}
-                className="group relative rounded-2xl overflow-hidden bg-white/[0.02] border border-white/[0.08] hover:border-amber-400/40 transition-all duration-500 hover:-translate-y-1.5 cursor-pointer flex flex-col shadow-lg hover:shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
+                className="group relative rounded-xl sm:rounded-2xl overflow-hidden bg-white/[0.02] border border-white/[0.08] hover:border-amber-400/40 transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col shadow-sm sm:shadow-lg hover:shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
               >
                 {/* Visual Card Image Box with Measured Scrim */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-900">
+                <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-neutral-900">
                   <img
                     src={evt.image}
                     alt={evt.name}
@@ -927,32 +927,34 @@ export default function App() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#07070b] via-[#07070b]/40 to-transparent" />
 
                   {/* Corner Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 rounded-md text-[10px] font-mono uppercase tracking-wider text-amber-200 bg-black/60 border border-white/10 backdrop-blur-md">
+                  <div className="absolute top-1 right-1 sm:top-4 sm:right-4">
+                    <span className="px-1.5 py-0.5 sm:px-3 sm:py-1 rounded text-[7px] sm:text-[10px] font-mono uppercase tracking-wider text-amber-200 bg-black/75 border border-white/10 backdrop-blur-md">
                       {evt.badge}
                     </span>
                   </div>
                 </div>
 
                 {/* Content Area */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
+                <div className="p-2 sm:p-4 md:p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <div className="text-xs font-mono text-neutral-400 tracking-wider mb-1">
+                    <div className="text-[7px] sm:text-xs font-mono text-neutral-400 tracking-wider mb-0.5 sm:mb-1 truncate">
                       {evt.timeline}
                     </div>
-                    <h3 className="text-2xl font-cinzel font-bold text-white group-hover:text-amber-300 transition-colors">
+                    <h3 className="text-[11px] sm:text-lg md:text-2xl font-cinzel font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1 sm:line-clamp-2 leading-tight">
                       {evt.name}
                     </h3>
-                    <p className="mt-2 text-sm text-neutral-400 font-serif-luxury line-clamp-2 leading-relaxed">
+                    <p className="mt-1 sm:mt-2 text-[9px] sm:text-xs md:text-sm text-neutral-400 font-serif-luxury line-clamp-1 sm:line-clamp-2 leading-tight sm:leading-relaxed hidden sm:block">
                       {evt.tagline}
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                    <span className="text-xs font-semibold text-amber-400 tracking-wider uppercase group-hover:translate-x-1 transition-transform inline-flex items-center gap-1.5">
-                      Read Story <ArrowRight className="w-3.5 h-3.5" />
+                  <div className="mt-2 sm:mt-6 pt-1.5 sm:pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                    <span className="text-[8px] sm:text-xs font-semibold text-amber-400 tracking-wider uppercase group-hover:translate-x-0.5 sm:group-hover:translate-x-1 transition-transform inline-flex items-center gap-0.5 sm:gap-1.5">
+                      <span className="hidden sm:inline">Read Story</span>
+                      <span className="sm:hidden">Story</span>
+                      <ArrowRight className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
                     </span>
-                    <span className="text-[11px] text-neutral-500 font-mono">Archive Entry</span>
+                    <span className="hidden md:inline text-[11px] text-neutral-500 font-mono">Archive Entry</span>
                   </div>
                 </div>
               </div>
@@ -1073,8 +1075,8 @@ export default function App() {
       )}
 
       {/* SECTION 2: "OUR PLATFORMS" (Visual Disciplines Showcase) */}
-      <section id="platforms" className="py-24 border-t border-white/[0.06] relative bg-[#060609]">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="platforms" className="py-16 sm:py-24 border-t border-white/[0.06] relative bg-[#060609]">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
             <div>
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-rose-400/90 mb-2">
@@ -1089,41 +1091,41 @@ export default function App() {
             </p>
           </div>
 
-          {/* 3-Column Aesthetic Card Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* 3-Column Responsive Grid - 3 cards at a time on mobile */}
+          <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-8">
             {PLATFORMS_DATA.map((plat) => {
               const IconComp = plat.icon;
               return (
                 <div
                   key={plat.id}
-                  className="group relative p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-amber-400/50 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between shadow-lg"
+                  className="group relative p-2.5 sm:p-5 md:p-8 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-amber-400/50 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-sm sm:shadow-lg"
                 >
                   {/* Subtle Gradient Backlight */}
                   <div
-                    className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${plat.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`}
+                    className={`absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br ${plat.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`}
                   />
 
                   <div className="relative z-10">
-                    <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.1] flex items-center justify-center text-amber-300 group-hover:scale-110 group-hover:border-amber-400/50 transition-all duration-300 mb-6">
-                      <IconComp className="w-6 h-6" />
+                    <div className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/[0.1] flex items-center justify-center text-amber-300 group-hover:scale-105 group-hover:border-amber-400/50 transition-all duration-300 mb-2 sm:mb-4 md:mb-6">
+                      <IconComp className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                     </div>
 
-                    <div className="text-xs font-mono uppercase tracking-widest text-amber-400/80 mb-1">
+                    <div className="text-[7px] sm:text-[10px] md:text-xs font-mono uppercase tracking-widest text-amber-400/80 mb-0.5 sm:mb-1 truncate">
                       {plat.wing}
                     </div>
-                    <h3 className="text-2xl font-cinzel font-bold text-white group-hover:text-amber-300 transition-colors">
+                    <h3 className="text-[10px] sm:text-base md:text-2xl font-cinzel font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1 leading-tight">
                       {plat.name}
                     </h3>
-                    <p className="text-xs font-serif-luxury italic text-neutral-400 mt-1 mb-4">
+                    <p className="text-[8px] sm:text-xs font-serif-luxury italic text-neutral-400 mt-0.5 mb-1 sm:mb-4 line-clamp-1">
                       {plat.tagline}
                     </p>
 
-                    <p className="text-sm text-neutral-300 leading-relaxed font-sans">
+                    <p className="text-sm text-neutral-300 leading-relaxed font-sans hidden sm:block">
                       {plat.description}
                     </p>
                   </div>
 
-                  <div className="relative z-10 mt-8 pt-6 border-t border-white/[0.06]">
+                  <div className="relative z-10 mt-2 sm:mt-6 md:mt-8 pt-1.5 sm:pt-4 md:pt-6 border-t border-white/[0.06] hidden sm:block">
                     <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider mb-2">
                       Key Disciplines
                     </div>
@@ -1228,8 +1230,8 @@ export default function App() {
       </section>
 
       {/* SECTION 4: "THE AREAS WE WORK ON" (Operational Domains) */}
-      <section id="domains" className="py-24 border-t border-white/[0.06] relative bg-[#060609]">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="domains" className="py-16 sm:py-24 border-t border-white/[0.06] relative bg-[#060609]">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
             <div>
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-rose-400/90 mb-2">
@@ -1244,33 +1246,33 @@ export default function App() {
             </p>
           </div>
 
-          {/* Modern 6-Item Domain Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Modern 6-Item Domain Grid - 3 cards at a time on mobile */}
+          <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-8">
             {DOMAINS_DATA.map((dom) => {
               const IconComp = dom.icon;
               return (
                 <div
                   key={dom.id}
-                  className="group p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-amber-400/40 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+                  className="group p-2.5 sm:p-5 md:p-8 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-amber-400/40 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-sm sm:shadow-md"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-amber-300 mb-6 group-hover:border-amber-400/40 group-hover:scale-105 transition-all">
-                      <IconComp className="w-6 h-6" />
+                    <div className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-amber-300 mb-2 sm:mb-4 md:mb-6 group-hover:border-amber-400/40 group-hover:scale-105 transition-all">
+                      <IconComp className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                     </div>
 
-                    <h3 className="text-xl font-cinzel font-bold text-white group-hover:text-amber-300 transition-colors">
+                    <h3 className="text-[10px] sm:text-base md:text-xl font-cinzel font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1 leading-tight">
                       {dom.name}
                     </h3>
-                    <div className="text-xs font-mono text-neutral-400 mt-1 mb-4">
+                    <div className="text-[7px] sm:text-[10px] md:text-xs font-mono text-neutral-400 mt-0.5 mb-1 sm:mb-4 truncate">
                       {dom.subtitle}
                     </div>
 
-                    <p className="text-sm text-neutral-300 leading-relaxed font-sans">
+                    <p className="text-sm text-neutral-300 leading-relaxed font-sans hidden sm:block">
                       {dom.description}
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-5 border-t border-white/[0.06]">
+                  <div className="mt-2 sm:mt-6 pt-1.5 sm:pt-5 border-t border-white/[0.06] hidden sm:block">
                     <div className="text-[11px] font-mono text-neutral-400 uppercase tracking-wider mb-2">
                       Key Deliverables
                     </div>
@@ -1291,8 +1293,8 @@ export default function App() {
       </section>
 
       {/* SECTION 5: "BOARD MEMBERS" (Continuous Unified Grid) */}
-      <section id="board" className="py-24 border-t border-white/[0.06] relative">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="board" className="py-16 sm:py-24 border-t border-white/[0.06] relative">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-amber-400/90 mb-2">
@@ -1363,8 +1365,8 @@ export default function App() {
             </button>
           </div>
 
-          {/* Continuous Responsive 4-Column Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Continuous Responsive Grid - 3 cards at a time on mobile */}
+          <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-6">
             {filteredBoard.map((member, idx) => (
               <div
                 key={member.name}
@@ -1372,7 +1374,7 @@ export default function App() {
                   setSelectedMember(member);
                   playChime(523.25);
                 }}
-                className="group relative rounded-2xl overflow-hidden bg-white/[0.02] border border-white/[0.08] hover:border-amber-400/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col shadow-md cursor-pointer hover:shadow-[0_10px_30px_rgba(245,158,11,0.15)]"
+                className="group relative rounded-xl sm:rounded-2xl overflow-hidden bg-white/[0.02] border border-white/[0.08] hover:border-amber-400/50 transition-all duration-300 hover:-translate-y-1 flex flex-col shadow-sm sm:shadow-md cursor-pointer hover:shadow-[0_10px_30px_rgba(245,158,11,0.15)]"
                 role="button"
                 tabIndex={0}
                 aria-label={`View portrait and profile of ${member.name}`}
@@ -1390,34 +1392,34 @@ export default function App() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#07070b] via-[#07070b]/20 to-transparent" />
 
                   {/* Hierarchical Index Marker */}
-                  <div className="absolute top-3 left-3">
-                    <span className="text-[10px] font-mono text-neutral-400 bg-black/60 px-2 py-0.5 rounded border border-white/10 backdrop-blur-sm">
+                  <div className="absolute top-1 left-1 sm:top-3 sm:left-3">
+                    <span className="text-[7px] sm:text-[10px] font-mono text-neutral-300 bg-black/75 px-1 sm:px-2 py-0.5 rounded border border-white/10 backdrop-blur-sm">
                       #{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
                     </span>
                   </div>
 
                   {/* Hover Quick-View Badge */}
-                  <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-[10px] font-mono tracking-wider text-amber-300 bg-black/75 px-2.5 py-1 rounded-full border border-amber-400/40 backdrop-blur-md flex items-center gap-1">
-                      <Eye className="w-3 h-3 text-amber-400" />
-                      <span>Portrait</span>
+                  <div className="absolute bottom-1 right-1 sm:bottom-3 sm:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-[7px] sm:text-[10px] font-mono tracking-wider text-amber-300 bg-black/80 px-1 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-amber-400/40 backdrop-blur-md flex items-center gap-0.5 sm:gap-1">
+                      <Eye className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-amber-400" />
+                      <span className="hidden sm:inline">Portrait</span>
                     </span>
                   </div>
                 </div>
 
                 {/* Info Block */}
-                <div className="p-5 flex-1 flex flex-col justify-between">
+                <div className="p-1.5 sm:p-3 md:p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-base font-cinzel font-bold text-white tracking-wider uppercase group-hover:text-amber-300 transition-colors">
+                    <h3 className="text-[10px] sm:text-xs md:text-base font-cinzel font-bold text-white tracking-wider uppercase group-hover:text-amber-300 transition-colors line-clamp-1 leading-tight">
                       {member.name}
                     </h3>
-                    <div className="text-xs font-serif-luxury italic text-amber-400/90 font-medium mt-0.5">
+                    <div className="text-[8px] sm:text-[10px] md:text-xs font-serif-luxury italic text-amber-400/90 font-medium mt-0.5 line-clamp-1 leading-tight">
                       {member.designation}
                     </div>
                   </div>
 
                   {member.bio && (
-                    <p className="mt-3 text-[11px] text-neutral-400 line-clamp-2 leading-relaxed">
+                    <p className="mt-1 sm:mt-3 text-[10px] sm:text-[11px] text-neutral-400 line-clamp-2 leading-relaxed hidden sm:block">
                       {member.bio}
                     </p>
                   )}
@@ -1520,35 +1522,35 @@ export default function App() {
           </blockquote>
 
           {/* 4 Pillars of Experience */}
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-            <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
-              <Sparkles className="w-6 h-6 text-amber-400 mb-3" />
-              <h4 className="text-base font-cinzel font-bold text-white mb-2">Unbounded Freedom</h4>
-              <p className="text-xs text-neutral-400 leading-relaxed">
+          <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 text-left">
+            <div className="p-3.5 sm:p-6 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
+              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 mb-2 sm:mb-3" />
+              <h4 className="text-xs sm:text-base font-cinzel font-bold text-white mb-1 sm:mb-2 leading-tight">Unbounded Freedom</h4>
+              <p className="text-[11px] sm:text-xs text-neutral-400 leading-relaxed">
                 A judgment-free creative incubator to experiment with music, drama, poetry, and modern digital mediums.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
-              <Award className="w-6 h-6 text-rose-400 mb-3" />
-              <h4 className="text-base font-cinzel font-bold text-white mb-2">Grand Arenas</h4>
-              <p className="text-xs text-neutral-400 leading-relaxed">
+            <div className="p-3.5 sm:p-6 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
+              <Award className="w-5 h-5 sm:w-6 sm:h-6 text-rose-400 mb-2 sm:mb-3" />
+              <h4 className="text-xs sm:text-base font-cinzel font-bold text-white mb-1 sm:mb-2 leading-tight">Grand Arenas</h4>
+              <p className="text-[11px] sm:text-xs text-neutral-400 leading-relaxed">
                 Perform before 10,000+ passionate audiences on the flagship Rigolade and Vivarth concert stages.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
-              <Users className="w-6 h-6 text-amber-400 mb-3" />
-              <h4 className="text-base font-cinzel font-bold text-white mb-2">Lifelong Kinship</h4>
-              <p className="text-xs text-neutral-400 leading-relaxed">
+            <div className="p-3.5 sm:p-6 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
+              <Users className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 mb-2 sm:mb-3" />
+              <h4 className="text-xs sm:text-base font-cinzel font-bold text-white mb-1 sm:mb-2 leading-tight">Lifelong Kinship</h4>
+              <p className="text-[11px] sm:text-xs text-neutral-400 leading-relaxed">
                 Forge unbreakable bonds with fellow creators, mentors, and alumni working across the creative industries.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
-              <Briefcase className="w-6 h-6 text-rose-400 mb-3" />
-              <h4 className="text-base font-cinzel font-bold text-white mb-2">Leadership Pedigree</h4>
-              <p className="text-xs text-neutral-400 leading-relaxed">
+            <div className="p-3.5 sm:p-6 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-sm">
+              <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-rose-400 mb-2 sm:mb-3" />
+              <h4 className="text-xs sm:text-base font-cinzel font-bold text-white mb-1 sm:mb-2 leading-tight">Leadership Pedigree</h4>
+              <p className="text-[11px] sm:text-xs text-neutral-400 leading-relaxed">
                 Master real-world logistics, marketing, fiscal accounting, and design direction that accelerate your career.
               </p>
             </div>
