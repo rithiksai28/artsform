@@ -1659,7 +1659,7 @@ export default function App() {
                     className="flex items-center gap-2 hover:text-amber-300 transition-colors"
                   >
                     <Phone className="w-3.5 h-3.5 text-amber-400" />
-                    <span>7893831557</span>
+                    <span>7680077335</span>
                   </a>
                 </li>
                 <li>
